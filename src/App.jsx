@@ -1,43 +1,24 @@
-import React, { useEffect } from 'react'
-import Navbar from './components/Navbar'
-import Hero from './components/Hero'
-import About from './components/About'
-import Speakers from './components/Speakers'
-import Timeline from './components/Timeline'
-import FAQ from './components/FAQ'
-import Footer from './components/Footer'
-import './index.css'
+import Navbar from './components/Navbar';
+import Hero from './components/Hero';
+import PlaceholderSection from './components/PlaceholderSection';
 
 function App() {
-  
-  useEffect(() => {
-    const cursorGlow = document.getElementById('cursor-glow');
-    
-    const handleMouseMove = (e) => {
-      if (cursorGlow) {
-        cursorGlow.style.left = `${e.clientX}px`;
-        cursorGlow.style.top = `${e.clientY}px`;
-      }
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
-
   return (
-    <>
-      <div id="cursor-glow"></div>
-      <div className="grid-overlay"></div>
-      
+    <div className="min-h-screen bg-black text-white selection:bg-brand-purple/30 selection:text-white">
       <Navbar />
-      <Hero />
-      <About />
-      <Speakers />
-      <Timeline />
-      <FAQ />
-      <Footer />
-    </>
-  )
+      
+      <main>
+        <Hero />
+        
+        {/* Placeholder sections for smooth scrolling */}
+        <PlaceholderSection id="about" title="About" />
+        <PlaceholderSection id="speakers" title="Speakers & Panels" />
+        <PlaceholderSection id="timeline" title="Timeline & Highlights" />
+        <PlaceholderSection id="faq" title="FAQ" />
+        <PlaceholderSection id="contact" title="Contact" />
+      </main>
+    </div>
+  );
 }
 
-export default App
+export default App;

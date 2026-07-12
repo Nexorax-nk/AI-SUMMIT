@@ -1,114 +1,99 @@
-import React, { useEffect, useRef } from 'react';
+import { motion } from 'framer-motion';
+import HeroButtons from './HeroButtons';
+import HighlightCards from './HighlightCards';
+import EventInfoCard from './EventInfoCard';
+import bgVideo from '../assets/hero-bg-video.mp4';
+import { Mouse } from 'lucide-react';
 
-const Hero = () => {
-  const heroRef = useRef(null);
-
-  useEffect(() => {
-    const handleMouseMove = (e) => {
-      if (!heroRef.current) return;
-      const { clientX, clientY } = e;
-      const x = (clientX / window.innerWidth - 0.5) * 20;
-      const y = (clientY / window.innerHeight - 0.5) * 20;
-      
-      const elements = heroRef.current.querySelectorAll('.parallax');
-      elements.forEach((el) => {
-        const speed = el.getAttribute('data-speed') || 1;
-        el.style.transform = `translate(${x * speed}px, ${y * speed}px)`;
-      });
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
-
+export default function Hero() {
   return (
-    <section id="hero" ref={heroRef} style={{
-      minHeight: '100vh',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      position: 'relative',
-      paddingTop: '80px', // to account for navbar
-      overflow: 'hidden'
-    }}>
-      {/* Particle container handled in App level or CSS */}
-      <div className="particles">
-        {/* Simple CSS particles */}
-        {[...Array(20)].map((_, i) => (
-          <div key={i} className="particle" style={{
-            left: `${Math.random() * 100}%`,
-            width: `${Math.random() * 4 + 2}px`,
-            height: `${Math.random() * 4 + 2}px`,
-            animationDelay: `${Math.random() * 20}s`,
-            animationDuration: `${Math.random() * 10 + 10}s`
-          }} />
-        ))}
-      </div>
-
-      <div className="container" style={{ textAlign: 'center', position: 'relative', zIndex: 10 }}>
-        
-        <div className="parallax reveal active" data-speed="2" style={{ marginBottom: '1.5rem' }}>
-          <span style={{
-            padding: '0.5rem 1rem',
-            background: 'var(--glass-bg)',
-            border: '1px solid var(--glass-border)',
-            borderRadius: '50px',
-            fontSize: '0.875rem',
-            letterSpacing: '2px',
-            textTransform: 'uppercase',
-            color: 'var(--secondary-color)'
-          }}>The Flagship Conference</span>
-        </div>
-
-        <h1 className="parallax reveal active stagger-1" data-speed="1.5" style={{ marginBottom: '1rem' }}>
-          <span className="text-gradient">ASTRAX'26</span><br />
-          AI Innovation Summit
-        </h1>
-
-        <p className="parallax reveal active stagger-2" data-speed="1" style={{ 
-          maxWidth: '600px', 
-          margin: '0 auto 3rem auto',
-          fontSize: '1.25rem'
-        }}>
-          "Shaping the Future of Artificial Intelligence"<br/>
-          Join the brightest minds at ATHERA, Chennai Institute of Technology.
-        </p>
-
-        <div className="parallax reveal active stagger-3" data-speed="0.5" style={{ display: 'flex', gap: '1.5rem', justifyContent: 'center' }}>
-          <a href="#register" className="btn btn-primary">Register Now</a>
-          <a href="#about" className="btn btn-secondary">Explore Summit</a>
-        </div>
-      </div>
+    <section id="home" className="relative w-full min-h-[100svh] flex flex-col justify-center overflow-hidden">
       
-      {/* Scroll Indicator */}
-      <div style={{
-        position: 'absolute',
-        bottom: '2rem',
-        left: '50%',
-        transform: 'translateX(-50%)',
-        animation: 'slideUp 2s infinite alternate',
-        opacity: 0.5
-      }}>
-        <div style={{
-          width: '30px',
-          height: '50px',
-          border: '2px solid var(--text-muted)',
-          borderRadius: '15px',
-          display: 'flex',
-          justifyContent: 'center',
-          padding: '5px'
-        }}>
-          <div style={{
-            width: '6px',
-            height: '6px',
-            background: 'var(--text-muted)',
-            borderRadius: '50%',
-            animation: 'fadeIn 1s infinite alternate'
-          }} />
-        </div>
+      {/* Background Video */}
+      <div className="absolute inset-0 w-full h-full z-0">
+        <video 
+          autoPlay 
+          muted 
+          loop 
+          playsInline 
+          className="w-full h-full object-cover"
+        >
+          <source src={bgVideo} type="video/mp4" />
+        </video>
+        {/* Dark Overlays for depth and readability */}
+        <div className="absolute inset-0 bg-black/60 z-10" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-transparent to-black z-10" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-brand-purple/20 via-transparent to-transparent z-10 mix-blend-screen" />
       </div>
+
+      {/* Hero Content */}
+      <div className="relative z-20 w-full max-w-7xl mx-auto px-4 sm:px-6 py-24 sm:py-32 flex flex-col items-center text-center mt-12 md:mt-0">
+        
+        {/* Small Heading */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.1 }}
+          className="flex items-center gap-3 sm:gap-4 mb-4"
+        >
+          <div className="h-[1px] w-8 sm:w-12 bg-gradient-to-r from-transparent to-brand-purple" />
+          <h2 className="text-brand-green font-space font-medium tracking-[0.2em] sm:tracking-[0.3em] uppercase text-xs sm:text-sm">
+            ASTRAX'26
+          </h2>
+          <div className="h-[1px] w-8 sm:w-12 bg-gradient-to-l from-transparent to-brand-purple" />
+        </motion.div>
+
+        {/* Large Heading */}
+        <motion.h1 
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+          className="font-orbitron font-black text-[clamp(2.5rem,8vw,6rem)] tracking-tight leading-[1.1] mb-2 sm:mb-4 w-full"
+        >
+          <span className="text-white block mb-1 sm:mb-2 filter drop-shadow-[0_0_15px_rgba(255,255,255,0.2)]">AI INNOVATION</span>
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-purple via-brand-purple to-brand-green filter drop-shadow-[0_0_20px_rgba(138,43,226,0.3)]">SUMMIT</span>
+        </motion.h1>
+
+        {/* Tagline */}
+        <motion.p 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className="font-space text-base sm:text-lg md:text-2xl text-gray-300 font-medium tracking-wide mt-4 sm:mt-6 mb-3 sm:mb-4 px-2"
+        >
+          SHAPING THE <span className="text-brand-green font-semibold">FUTURE</span> OF ARTIFICIAL INTELLIGENCE
+        </motion.p>
+
+        {/* Description */}
+        <motion.p 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.5 }}
+          className="font-inter text-xs sm:text-sm md:text-base text-gray-400 max-w-2xl mx-auto leading-relaxed mb-6 sm:mb-8 px-4"
+        >
+          Join students, innovators, researchers, startups and industry experts to discover the future of Artificial Intelligence through inspiring talks, networking and innovation.
+        </motion.p>
+
+        {/* Highlight Cards */}
+        <HighlightCards />
+
+        {/* Buttons */}
+        <HeroButtons />
+
+        {/* Event Info Card */}
+        <EventInfoCard />
+      </div>
+
+      {/* Scroll Indicator */}
+      <motion.div 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1, delay: 1.5 }}
+        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 flex flex-col items-center gap-2"
+      >
+        <Mouse size={24} className="text-gray-400 animate-bounce" />
+        <span className="text-[10px] font-space tracking-[0.2em] text-gray-500 uppercase">Scroll to explore</span>
+      </motion.div>
     </section>
   );
-};
-
-export default Hero;
+}
