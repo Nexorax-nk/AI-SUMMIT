@@ -1,0 +1,365 @@
+/*
+  Speakers.css  — Polished dark-navy redesign
+  ──────────────────────────────────────────────────────────────
+  • Centred header with eyebrow + subtitle
+  • Full-bleed rectangular photo (object-fit: cover)
+  • Removed badge / announcement styles
+  • Refined card proportions, spacing & animations
+*/
+
+/* ── Section ────────────────────────────────────────────────── */
+.speakers-section {
+  position: relative;
+  z-index: 1;
+  background: transparent;
+}
+
+/* ── Header (centred) ────────────────────────────────────────── */
+.speakers-header {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto 4rem;
+}
+
+/* Eyebrow row */
+.speakers-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--primary-color);
+  margin-bottom: 1.1rem;
+}
+
+.eyebrow-line {
+  display: block;
+  width: 40px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+  flex-shrink: 0;
+}
+
+.eyebrow-icon {
+  animation: iconPulse 2.4s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+@keyframes iconPulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50%       { transform: scale(1.25); opacity: 0.65; }
+}
+
+/* Main title */
+.speakers-main-title {
+  font-family: 'Orbitron', 'Space Grotesk', sans-serif;
+  font-size: clamp(2rem, 4.5vw, 3.2rem);
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 0.02em;
+  margin-bottom: 1rem;
+  line-height: 1.15;
+}
+
+/* Subtitle */
+.speakers-subtitle {
+  font-size: 1rem;
+  color: var(--text-muted);
+  line-height: 1.65;
+  margin: 0;
+  max-width: 560px;
+  margin-inline: auto;
+}
+
+/* ── Grid ────────────────────────────────────────────────────── */
+.speakers-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.75rem;
+  /* centre the grid block itself */
+  max-width: 1100px;
+  margin-inline: auto;
+}
+
+@media (max-width: 1024px) {
+  .speakers-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 640px) {
+  .speakers-grid {
+    grid-template-columns: 1fr;
+    max-width: 420px;
+  }
+}
+
+/* ── Card ────────────────────────────────────────────────────── */
+.speaker-card {
+  position: relative;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  background: linear-gradient(170deg, #0d0d0d 0%, #080808 60%, #000000 100%);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition:
+    transform 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.45s ease,
+    border-color 0.4s ease;
+}
+
+.speaker-card:hover {
+  transform: translateY(-10px);
+  border-color: rgba(59, 130, 246, 0.4);
+  box-shadow:
+    0 24px 56px rgba(0, 0, 0, 0.6),
+    0 0 36px rgba(59, 130, 246, 0.13);
+}
+
+/* Animated shimmer border on hover */
+.speaker-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  padding: 1px;
+  background: linear-gradient(
+    130deg,
+    rgba(59, 130, 246, 0.8),
+    rgba(6, 182, 212, 0.55),
+    rgba(139, 92, 246, 0.55),
+    rgba(59, 130, 246, 0.8)
+  );
+  background-size: 300% 300%;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+  animation: cardBorderShimmer 5s linear infinite;
+}
+
+.speaker-card:hover::before { opacity: 1; }
+
+@keyframes cardBorderShimmer {
+  0%   { background-position: 0% 50%; }
+  100% { background-position: 300% 50%; }
+}
+
+/* ── Top bar ─────────────────────────────────────────────────── */
+.card-top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.9rem 1.2rem 0.6rem;
+}
+
+.speaker-num-label {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: rgba(148, 163, 184, 0.7);
+  text-transform: uppercase;
+}
+
+.speaker-time {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.58rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: rgba(148, 163, 184, 0.65);
+}
+
+/* ── Photo — full-bleed rectangle ───────────────────────────── */
+.speaker-photo-wrap {
+  position: relative;
+  margin: 0 0.85rem 0;
+  border-radius: 10px;
+  height: 260px;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: rgba(5, 5, 5, 0.85);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+/* The image fills the whole rectangle */
+.speaker-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  border-radius: 10px;
+  transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1),
+              filter 0.45s ease;
+  filter: brightness(0.88) saturate(1.1);
+}
+
+.speaker-card:hover .speaker-photo {
+  transform: scale(1.06);
+  filter: brightness(1) saturate(1.2);
+}
+
+/* Gradient overlay — fades bottom of photo into card */
+.photo-overlay {
+  position: absolute;
+  inset: 0;
+  border-radius: 10px;
+  background: linear-gradient(
+    to bottom,
+    transparent 30%,
+    rgba(9, 18, 41, 0.6) 75%,
+    rgba(9, 18, 41, 0.92) 100%
+  );
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+
+.speaker-card:hover .photo-overlay {
+  opacity: 0.75;
+}
+
+/* watermark number removed */
+
+/* ── Info area ───────────────────────────────────────────────── */
+.speaker-info {
+  padding: 1rem 1.2rem 0.6rem;
+  flex: 1;
+}
+
+.speaker-category-label {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.53rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+  transition: letter-spacing 0.4s ease;
+}
+
+.speaker-card:hover .speaker-category-label {
+  letter-spacing: 0.26em;
+}
+
+.speaker-category-label.keynote  { color: #60a5fa; }
+.speaker-category-label.industry { color: #34d399; }
+.speaker-category-label.panel    { color: #a78bfa; }
+
+.speaker-name {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #f1f5f9;
+  margin-bottom: 0.2rem;
+  line-height: 1.3;
+}
+
+.speaker-role {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--primary-color);
+  margin-bottom: 0.25rem;
+  opacity: 0.85;
+}
+
+.speaker-topic {
+  font-size: 0.8rem;
+  color: rgba(148, 163, 184, 0.75);
+  margin: 0;
+  line-height: 1.45;
+}
+
+/* ── Card footer ─────────────────────────────────────────────── */
+.card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.7rem 1.2rem 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  margin-top: 0.4rem;
+}
+
+.card-footer-left {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.55rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: rgba(148, 163, 184, 0.65);
+}
+
+.card-footer-right {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.58rem;
+  color: rgba(148, 163, 184, 0.5);
+  text-align: right;
+}
+
+/* ── Hover social links ──────────────────────────────────────── */
+.speaker-socials {
+  position: absolute;
+  top: 0.9rem;
+  right: 0.9rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  opacity: 0;
+  transform: translateX(10px);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+  z-index: 10;
+}
+
+.speaker-card:hover .speaker-socials {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.speaker-social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: rgba(6, 13, 34, 0.88);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  color: rgba(148, 163, 184, 0.8);
+  text-decoration: none;
+  backdrop-filter: blur(6px);
+  transition:
+    color 0.3s ease,
+    border-color 0.3s ease,
+    background 0.3s ease,
+    transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.speaker-social-link:hover {
+  color: #60a5fa;
+  border-color: rgba(59, 130, 246, 0.75);
+  background: rgba(59, 130, 246, 0.18);
+  transform: scale(1.18);
+}
+
+/* ── Reduced motion ──────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .speaker-card,
+  .speaker-photo,
+  .speaker-social-link,
+  .speaker-category-label,
+  .speaker-socials,
+  .eyebrow-icon {
+    transition: none;
+    animation: none;
+  }
+  .speaker-card:hover { transform: none; }
+  .speaker-card::before { animation: none; }
+}
