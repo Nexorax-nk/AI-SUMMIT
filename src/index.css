@@ -27,9 +27,9 @@
 /* We aren't using tailwind actually, just plain CSS! The prompt requested Vanilla CSS. */
 :root {
   --bg-color: #050816;
-  --primary-color: #3B82F6;
-  --secondary-color: #06B6D4;
-  --accent-color: #8B5CF6;
+  --primary-color: #8a2be2;
+  --secondary-color: #6a1b9a;
+  --accent-color: #39ff14;
   --text-color: #FFFFFF;
   --text-muted: #94A3B8;
   

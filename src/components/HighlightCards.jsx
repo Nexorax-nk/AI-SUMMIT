@@ -1,11 +1,12 @@
 import { motion } from 'framer-motion';
+import { Bot, Brain, Rocket, Globe } from 'lucide-react';
 
 export default function HighlightCards() {
   const highlights = [
-    { icon: '🤖', title: 'Generative AI' },
-    { icon: '🧠', title: 'Machine Learning' },
-    { icon: '🚀', title: 'Innovation' },
-    { icon: '🌐', title: 'Networking' }
+    { icon: <Bot size={20} className="text-brand-green" />, title: 'Generative AI' },
+    { icon: <Brain size={20} className="text-pink-400" />, title: 'Machine Learning' },
+    { icon: <Rocket size={20} className="text-orange-400" />, title: 'Innovation' },
+    { icon: <Globe size={20} className="text-blue-400" />, title: 'Networking' }
   ];
 
   const container = {

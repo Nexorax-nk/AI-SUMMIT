@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import {
   ArrowUpRight,
   CalendarDays,
@@ -58,65 +59,126 @@ const FAQS = [
 ];
 
 const FAQ = () => {
-  const [openQuestion, setOpenQuestion] = useState(FAQS[0].q);
+  const [openIndex, setOpenIndex] = useState(0);
 
   return (
-    <section id="faq" className="faq-section">
-      <div className="container faq-container">
-        <header className="faq-heading">
-          <div className="section-eyebrow">
-            <span className="eyebrow-line" />
-            <Sparkles size={14} />
-            <span>Summit briefing</span>
-            <span className="eyebrow-line" />
-          </div>
-          <h2>Frequently Asked<br /><span>Questions</span></h2>
-        </header>
+    <section id="faq" className="relative py-12 sm:py-16 bg-transparent overflow-hidden">
+      {/* Background Glow */}
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-[800px] h-[800px] bg-brand-green/5 blur-[120px] rounded-full -z-10 pointer-events-none" />
 
-        <div className="faq-list" aria-live="polite">
+      <div className="container relative z-10 mx-auto px-6 max-w-4xl">
+        {/* Header Section */}
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-16 sm:mb-20"
+        >
+          <div className="flex items-center justify-center gap-3 text-sm tracking-[0.2em] uppercase text-brand-green mb-4 font-semibold">
+            <Sparkles size={16} />
+            <span>Summit Briefing</span>
+            <Sparkles size={16} />
+          </div>
+          
+          <h2 className="text-4xl sm:text-5xl font-heading mb-6 leading-tight text-white">
+            Frequently Asked <span className="text-gradient">Questions.</span>
+          </h2>
+        </motion.div>
+
+        {/* FAQ Accordion */}
+        <div className="space-y-4 mb-16">
           {FAQS.map((faq, index) => {
-            const isOpen = openQuestion === faq.q;
-            const panelId = `faq-panel-${index}`;
+            const isOpen = openIndex === index;
             const Icon = faq.icon;
+            
             return (
-              <article
-                className={`faq-card ${isOpen ? 'is-open' : ''}`}
-                key={faq.q}
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className={`glass border transition-all duration-300 rounded-2xl overflow-hidden ${
+                  isOpen ? 'border-brand-purple/50 bg-white/[0.03] shadow-[0_10px_30px_rgba(138,43,226,0.1)]' : 'border-white/5 hover:border-white/10 hover:bg-white/[0.01]'
+                }`}
               >
                 <button
-                  className="faq-question"
-                  type="button"
-                  aria-expanded={isOpen}
-                  aria-controls={panelId}
-                  onClick={() => setOpenQuestion(isOpen ? null : faq.q)}
+                  onClick={() => setOpenIndex(isOpen ? null : index)}
+                  className="w-full flex items-center justify-between p-6 sm:p-8 text-left focus:outline-none"
                 >
-                  <span className="faq-icon"><Icon size={18} strokeWidth={1.65} /></span>
-                  <span className="faq-question-copy">
-                    <span className="faq-category">{faq.category}</span>
-                    <span className="faq-question-text">{faq.q}</span>
-                  </span>
-                  <span className="faq-chevron"><ChevronDown size={21} /></span>
+                  <div className="flex items-center gap-4 sm:gap-6">
+                    <div className={`flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center transition-colors duration-300 ${
+                      isOpen ? 'bg-brand-purple/20 text-brand-purple border border-brand-purple/30' : 'bg-white/5 text-gray-400 border border-white/5'
+                    }`}>
+                      <Icon size={20} />
+                    </div>
+                    <div>
+                      <span className="block text-[10px] font-space tracking-widest uppercase text-brand-green mb-1">
+                        {faq.category}
+                      </span>
+                      <h3 className={`text-lg sm:text-xl font-heading transition-colors duration-300 ${
+                        isOpen ? 'text-white' : 'text-gray-300'
+                      }`}>
+                        {faq.q}
+                      </h3>
+                    </div>
+                  </div>
+                  <div className={`flex-shrink-0 ml-4 transition-transform duration-500 ${isOpen ? 'rotate-180 text-brand-purple' : 'text-gray-500'}`}>
+                    <ChevronDown size={24} />
+                  </div>
                 </button>
 
-                <div className="faq-answer-grid" id={panelId} aria-hidden={!isOpen}>
-                  <div className="faq-answer-inner">
-                    <p>{faq.a}</p>
-                  </div>
-                </div>
-              </article>
+                <AnimatePresence>
+                  {isOpen && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: 'auto', opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.4, ease: "easeInOut" }}
+                    >
+                      <div className="px-6 sm:px-8 pb-6 sm:pb-8 pt-0 ml-0 sm:ml-[72px]">
+                        <p className="text-gray-400 leading-relaxed">
+                          {faq.a}
+                        </p>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
             );
           })}
-
         </div>
 
-        <div className="faq-help">
-          <span className="faq-help-icon"><MessageCircle size={20} /></span>
-          <div className="faq-help-copy">
-            <span>Still have a question?</span>
-            <p>Connect with the ATHERA summit team.</p>
+        {/* Still Have Questions Box */}
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.6 }}
+          className="glass p-6 sm:p-8 rounded-3xl border border-white/10 flex flex-col sm:flex-row items-center justify-between gap-6 relative overflow-hidden"
+        >
+          {/* Subtle gradient flash */}
+          <div className="absolute inset-0 bg-gradient-to-r from-brand-purple/10 to-brand-green/10 opacity-50" />
+          
+          <div className="flex items-center gap-5 relative z-10">
+            <div className="w-14 h-14 rounded-full bg-brand-green/20 border border-brand-green/30 flex items-center justify-center text-brand-green">
+              <MessageCircle size={24} />
+            </div>
+            <div>
+              <h4 className="text-white font-heading text-xl mb-1">Still have a question?</h4>
+              <p className="text-gray-400 text-sm">Connect with the ATHERA summit team.</p>
+            </div>
           </div>
-          <a href="#contact">Contact team <ArrowUpRight size={16} /></a>
-        </div>
+          
+          <a 
+            href="#contact" 
+            className="relative z-10 flex items-center gap-2 px-6 py-3 rounded-full bg-white text-black font-semibold text-sm hover:bg-brand-green hover:text-black transition-colors duration-300"
+          >
+            Contact Team <ArrowUpRight size={16} />
+          </a>
+        </motion.div>
+
       </div>
     </section>
   );
