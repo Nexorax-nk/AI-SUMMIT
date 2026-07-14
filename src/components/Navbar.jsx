@@ -72,7 +72,7 @@ export default function Navbar() {
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? 'bg-black/40 backdrop-blur-md border-b border-white/10 py-4' : 'bg-transparent py-6'
+        scrolled || mobileMenuOpen ? 'bg-black/90 backdrop-blur-xl border-b border-white/10 py-4' : 'bg-transparent py-4 sm:py-6'
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
@@ -120,7 +120,7 @@ export default function Navbar() {
 
         {/* Mobile Menu Toggle */}
         <button 
-          className="lg:hidden text-white p-2 -mr-2 hover:text-brand-green transition-colors"
+          className="lg:hidden relative z-[60] text-white p-2 -mr-2 hover:text-brand-green transition-colors"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         >
           {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -131,12 +131,12 @@ export default function Navbar() {
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden bg-black/95 border-b border-white/10 backdrop-blur-xl overflow-hidden"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="lg:hidden absolute top-full left-0 right-0 h-[100vh] bg-[#050505] border-t border-white/10 overflow-y-auto z-40 pb-32"
           >
-            <div className="px-6 py-6 flex flex-col space-y-4">
+            <div className="px-8 py-10 flex flex-col space-y-8">
               {navLinks.map((link) => {
                 const isActive = activeSection === link.href;
                 return (
@@ -157,9 +157,9 @@ export default function Navbar() {
                   </a>
                 );
               })}
-              <a href="https://astrax26.tech/#registration" target="_blank" rel="noreferrer" className="flex items-center justify-center gap-2 group border border-brand-purple/50 rounded-full px-6 py-3 bg-brand-purple/10 w-full mt-4 hover:bg-brand-purple/20 transition-all duration-300">
-                <span className="text-xs font-semibold tracking-wider text-white">REGISTER NOW</span>
-                <ArrowRight size={14} className="text-white group-hover:translate-x-1 transition-transform duration-300" />
+              <a href="https://astrax26.tech/#registration" target="_blank" rel="noreferrer" className="flex items-center justify-center gap-2 group border border-brand-purple/50 rounded-full px-6 py-4 bg-brand-purple/10 w-full mt-8 hover:bg-brand-purple/20 transition-all duration-300">
+                <span className="text-sm font-semibold tracking-wider text-white">REGISTER NOW</span>
+                <ArrowRight size={16} className="text-white group-hover:translate-x-1 transition-transform duration-300" />
               </a>
             </div>
           </motion.div>
