@@ -9,7 +9,6 @@ const navLinks = [
   { name: 'Speakers & Panels', href: '#speakers' },
   { name: 'Timeline & Highlights', href: '#timeline' },
   { name: 'FAQ', href: '#faq' },
-  { name: 'Contact', href: '#contact' },
 ];
 
 export default function Navbar() {
