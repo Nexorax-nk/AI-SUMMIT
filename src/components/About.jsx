@@ -122,9 +122,9 @@ const About = () => {
                  <motion.div 
                    animate={{ rotate: 360 }} 
                    transition={{ repeat: Infinity, duration: 20, ease: "linear" }}
-                   className="w-full h-full rounded-full border-[2px] border-brand-purple/40 border-l-brand-purple border-r-transparent"
+                   className="w-full h-full rounded-full border-[4px] border-brand-purple/60 border-l-brand-purple border-r-transparent drop-shadow-[0_0_10px_rgba(138,43,226,0.5)]"
                  >
-                   <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-[12px] bg-brand-purple rounded-full shadow-[0_0_20px_#8a2be2,0_0_40px_#8a2be2]" />
+                   <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-6 h-[16px] bg-brand-purple rounded-full shadow-[0_0_30px_#8a2be2,0_0_60px_#8a2be2]" />
                  </motion.div>
                </div>
 
@@ -133,18 +133,11 @@ const About = () => {
                  <motion.div 
                    animate={{ rotate: -360 }} 
                    transition={{ repeat: Infinity, duration: 15, ease: "linear" }}
-                   className="w-full h-full rounded-full border-[2px] border-brand-green/30 border-t-brand-green border-b-transparent"
+                   className="w-full h-full rounded-full border-[3px] border-brand-green/50 border-t-brand-green border-b-transparent drop-shadow-[0_0_10px_rgba(57,255,20,0.4)]"
                  >
-                    <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-3 h-[9px] bg-brand-green rounded-full shadow-[0_0_20px_#39ff14,0_0_40px_#39ff14]" />
+                    <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-5 h-[14px] bg-brand-green rounded-full shadow-[0_0_30px_#39ff14,0_0_60px_#39ff14]" />
                  </motion.div>
                </div>
-
-               {/* Ring 3 (Flat Background Ring) */}
-               <motion.div 
-                 animate={{ rotate: 360 }} 
-                 transition={{ repeat: Infinity, duration: 40, ease: "linear" }}
-                 className="absolute w-[340px] h-[340px] sm:w-[460px] sm:h-[460px] rounded-full border border-dashed border-white/5 -z-10"
-               />
 
                {/* Hyper-Glow Core Sphere */}
                <motion.div 
@@ -209,12 +202,15 @@ const About = () => {
         {/* =========================================
             BENTO GRID: THE EXPERIENCE
         ========================================= */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16 relative">
+          {/* Subtle background glow for the grid */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-[200px] bg-brand-purple/5 blur-[100px] -z-10" />
+          
           {[
-            { title: 'Knowledge', desc: 'Gain insights from AI experts and thought leaders.', icon: <BrainCircuit size={28} className="text-brand-purple" /> },
-            { title: 'Technology', desc: 'Discover emerging AI innovations and tools.', icon: <Cpu size={28} className="text-brand-green" /> },
-            { title: 'Collaboration', desc: 'Exchange ideas with researchers, students and professionals.', icon: <Users size={28} className="text-blue-400" /> },
-            { title: 'Innovation', desc: 'Explore possibilities shaping the future.', icon: <Rocket size={28} className="text-brand-purple" /> }
+            { title: 'Knowledge', desc: 'Gain insights from AI experts and thought leaders.', icon: <BrainCircuit size={28} className="text-brand-purple group-hover:text-white transition-colors duration-300" /> },
+            { title: 'Technology', desc: 'Discover emerging AI innovations and tools.', icon: <Cpu size={28} className="text-brand-green group-hover:text-white transition-colors duration-300" /> },
+            { title: 'Collaboration', desc: 'Exchange ideas with researchers, students and professionals.', icon: <Users size={28} className="text-blue-400 group-hover:text-white transition-colors duration-300" /> },
+            { title: 'Innovation', desc: 'Explore possibilities shaping the future.', icon: <Rocket size={28} className="text-brand-purple group-hover:text-white transition-colors duration-300" /> }
           ].map((card, idx) => (
             <motion.div 
               key={idx}
@@ -222,14 +218,25 @@ const About = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.6, delay: idx * 0.1 }}
-              className="glass p-8 flex flex-col items-start border border-white/5 rounded-2xl hover:bg-white/[0.02] transition-all group"
-              whileHover={{ y: -5, boxShadow: '0 20px 40px rgba(0,0,0,0.4)' }}
+              className="glass relative p-8 flex flex-col items-start rounded-2xl overflow-hidden group border border-white/5 bg-black/40 backdrop-blur-md cursor-pointer"
+              whileHover={{ y: -8 }}
             >
-              <div className="mb-6 p-4 rounded-xl bg-white/5 group-hover:scale-110 group-hover:bg-brand-purple/10 transition-all duration-300">
+              {/* Hover Gradient Background */}
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-brand-purple/10 via-transparent to-brand-green/10" />
+              
+              {/* Glowing Border effect on hover */}
+              <div className="absolute inset-0 border-2 border-transparent group-hover:border-brand-purple/30 rounded-2xl transition-colors duration-500" />
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 shadow-[inset_0_0_30px_rgba(138,43,226,0.15)] rounded-2xl transition-opacity duration-500" />
+
+              <div className="relative z-10 mb-6 p-4 rounded-xl bg-white/5 border border-white/10 group-hover:scale-110 group-hover:bg-gradient-to-br group-hover:from-brand-purple group-hover:to-brand-green group-hover:border-transparent transition-all duration-500 shadow-lg">
                 {card.icon}
               </div>
-              <h4 className="mb-3 text-xl font-heading text-white">{card.title}</h4>
-              <p className="text-text-muted text-sm leading-relaxed">{card.desc}</p>
+              <h4 className="relative z-10 mb-3 text-xl font-heading text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-gray-400 transition-colors duration-300">
+                {card.title}
+              </h4>
+              <p className="relative z-10 text-text-muted text-sm leading-relaxed group-hover:text-gray-300 transition-colors duration-300">
+                {card.desc}
+              </p>
             </motion.div>
           ))}
         </div>
@@ -237,19 +244,19 @@ const About = () => {
         {/* =========================================
             BOTTOM TIMELINE: THE JOURNEY
         ========================================= */}
-        <div className="max-w-4xl mx-auto pt-4">
+        <div className="max-w-4xl mx-auto pt-4 pb-8">
           <div className="relative flex justify-between items-center w-full px-4 sm:px-12">
             
             {/* Background connecting line track */}
             <div className="absolute top-[22px] left-[10%] right-[10%] h-[2px] bg-white/5 -z-10" />
             
-            {/* Animated glowing line */}
+            {/* Animated glowing line with pulse effect */}
             <motion.div 
               initial={{ scaleX: 0 }}
               whileInView={{ scaleX: 1 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 1.5, ease: "easeInOut" }}
-              className="absolute top-[22px] left-[10%] right-[10%] h-[2px] bg-gradient-to-r from-brand-purple to-brand-green z-0 origin-left"
+              className="absolute top-[22px] left-[10%] right-[10%] h-[2px] bg-gradient-to-r from-brand-purple to-brand-green z-0 origin-left shadow-[0_0_15px_rgba(138,43,226,0.5)]"
             />
 
             {[
@@ -264,18 +271,24 @@ const About = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.5, delay: node.delay }}
-                className="flex flex-col items-center relative z-10"
+                className="flex flex-col items-center relative z-10 group cursor-pointer"
               >
                 <motion.div 
                   initial={{ scale: 0.8 }}
                   whileInView={{ scale: 1 }}
+                  whileHover={{ scale: 1.15, boxShadow: "0 0 25px rgba(57,255,20,0.4)" }}
                   viewport={{ once: true, margin: "-50px" }}
                   transition={{ duration: 0.4, delay: node.delay + 0.2 }}
-                  className="w-12 h-12 rounded-full bg-brand-dark border-2 border-brand-green flex justify-center items-center mb-4 shadow-[0_0_15px_rgba(57,255,20,0.2)]"
+                  className="w-12 h-12 rounded-full bg-[#050505] border-2 border-brand-green flex justify-center items-center mb-4 shadow-[0_0_15px_rgba(57,255,20,0.15)] group-hover:border-brand-purple transition-colors duration-500"
                 >
-                  <div className="w-3 h-3 rounded-full bg-brand-purple shadow-[0_0_8px_rgba(138,43,226,0.8)]" />
+                  {/* Pulsing inner dot */}
+                  <motion.div 
+                    animate={{ scale: [1, 1.2, 1], opacity: [0.7, 1, 0.7] }}
+                    transition={{ repeat: Infinity, duration: 2, ease: "easeInOut", delay: idx * 0.5 }}
+                    className="w-3 h-3 rounded-full bg-brand-purple shadow-[0_0_10px_rgba(138,43,226,1)] group-hover:bg-brand-green group-hover:shadow-[0_0_10px_rgba(57,255,20,1)] transition-colors duration-500" 
+                  />
                 </motion.div>
-                <span className="text-xs sm:text-sm font-semibold tracking-[0.1em] uppercase text-gray-300">
+                <span className="text-xs sm:text-sm font-semibold tracking-[0.1em] uppercase text-gray-400 group-hover:text-white transition-colors duration-300">
                   {node.step}
                 </span>
               </motion.div>

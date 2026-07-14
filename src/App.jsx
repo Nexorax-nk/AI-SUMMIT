@@ -2,9 +2,9 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
 import Speakers from './components/Speakers';
+import Timeline from './components/Timeline';
 import FAQ from './components/FAQ';
 import Footer from './components/Footer';
-import PlaceholderSection from './components/PlaceholderSection';
 
 function App() {
   return (
@@ -15,7 +15,7 @@ function App() {
         <Hero />
         <About />
         <Speakers />
-        <PlaceholderSection id="timeline" title="Timeline & Highlights" />
+        <Timeline />
         <FAQ />
       </main>
       <Footer />

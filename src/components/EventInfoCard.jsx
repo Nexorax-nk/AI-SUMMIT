@@ -33,7 +33,7 @@ export default function EventInfoCard() {
             </div>
             <div>
               <p className="text-[10px] text-gray-400 font-inter uppercase tracking-widest mb-1">Event Date</p>
-              <p className="text-sm font-bold font-space text-white tracking-wide">JUNE 22, 2026</p>
+              <p className="text-sm font-bold font-space text-white tracking-wide">JULY 22, 2026</p>
             </div>
           </div>
 
@@ -44,7 +44,7 @@ export default function EventInfoCard() {
             </div>
             <div>
               <p className="text-[10px] text-gray-400 font-inter uppercase tracking-widest mb-1">Venue</p>
-              <p className="text-sm font-bold font-space text-white tracking-wide">TECH HUB GLOBAL</p>
+              <p className="text-sm font-bold font-space text-white tracking-wide">COMING SOON</p>
             </div>
           </div>
 

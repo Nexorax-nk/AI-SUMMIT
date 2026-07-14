@@ -114,10 +114,10 @@ export default function Navbar() {
         </div>
 
         {/* Desktop Register Button */}
-        <button className="hidden md:flex items-center gap-2 group border border-brand-purple/50 rounded-full px-6 py-2.5 bg-brand-purple/10 hover:bg-brand-purple/20 transition-all duration-300 hover:shadow-[0_0_15px_rgba(138,43,226,0.5)]">
+        <a href="https://astrax26.tech/#registration" target="_blank" rel="noreferrer" className="hidden md:flex items-center gap-2 group border border-brand-purple/50 rounded-full px-6 py-2.5 bg-brand-purple/10 hover:bg-brand-purple/20 transition-all duration-300 hover:shadow-[0_0_15px_rgba(138,43,226,0.5)]">
           <span className="text-xs font-semibold tracking-wider text-white">REGISTER NOW</span>
           <ArrowRight size={14} className="text-white group-hover:translate-x-1 transition-transform duration-300" />
-        </button>
+        </a>
 
         {/* Mobile Menu Toggle */}
         <button 
@@ -158,10 +158,10 @@ export default function Navbar() {
                   </a>
                 );
               })}
-              <button className="flex items-center justify-center gap-2 group border border-brand-purple/50 rounded-full px-6 py-3 bg-brand-purple/10 w-full mt-4 hover:bg-brand-purple/20 transition-all duration-300">
+              <a href="https://astrax26.tech/#registration" target="_blank" rel="noreferrer" className="flex items-center justify-center gap-2 group border border-brand-purple/50 rounded-full px-6 py-3 bg-brand-purple/10 w-full mt-4 hover:bg-brand-purple/20 transition-all duration-300">
                 <span className="text-xs font-semibold tracking-wider text-white">REGISTER NOW</span>
                 <ArrowRight size={14} className="text-white group-hover:translate-x-1 transition-transform duration-300" />
-              </button>
+              </a>
             </div>
           </motion.div>
         )}

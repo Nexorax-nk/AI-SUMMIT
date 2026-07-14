@@ -19,20 +19,58 @@ const Footer = () => {
               The flagship Artificial Intelligence conference organized by ATHERA. Shaping the future of intelligent systems.
             </p>
             <div className="flex gap-4">
-              {[
-                { icon: MessageCircle, link: "#" },
-                { icon: Globe, link: "#" },
-                { icon: Share2, link: "#" },
-                { icon: Discord, link: "#" }
-              ].map((social, idx) => (
-                <a 
-                  key={idx} 
-                  href={social.link} 
-                  className="w-10 h-10 flex items-center justify-center rounded-full bg-white/5 border border-white/10 text-white/70 hover:bg-brand-purple/20 hover:text-brand-purple hover:border-brand-purple/50 transition-all duration-300"
-                >
-                  <social.icon size={18} />
-                </a>
-              ))}
+              {/* Website */}
+              <a 
+                href="https://astrax26.tech/" 
+                target="_blank" 
+                rel="noreferrer"
+                className="w-10 h-10 flex items-center justify-center rounded-full bg-white/5 border border-white/10 text-white/70 hover:bg-brand-purple/20 hover:text-brand-purple hover:border-brand-purple/50 transition-all duration-300 cursor-pointer relative z-20"
+                title="Visit Website"
+              >
+                <Globe size={18} />
+              </a>
+
+              {/* Email Icon */}
+              <a 
+                href="mailto:athera@citchennai.net" 
+                target="_blank"
+                rel="noreferrer"
+                className="w-10 h-10 flex items-center justify-center rounded-full bg-white/5 border border-white/10 text-white/70 hover:bg-brand-purple/20 hover:text-brand-purple hover:border-brand-purple/50 transition-all duration-300 cursor-pointer relative z-20"
+                title="Send Email"
+              >
+                <MessageCircle size={18} />
+              </a>
+
+              {/* Native Web Share */}
+              <button 
+                onClick={(e) => {
+                  e.preventDefault();
+                  if (navigator.share) {
+                    navigator.share({
+                      title: 'ASTRAX\'26 AI Summit',
+                      url: 'https://astrax26.tech/'
+                    }).catch(console.error);
+                  } else {
+                    navigator.clipboard.writeText('https://astrax26.tech/');
+                    alert('Website link copied to clipboard!');
+                  }
+                }}
+                className="w-10 h-10 flex items-center justify-center rounded-full bg-white/5 border border-white/10 text-white/70 hover:bg-brand-purple/20 hover:text-brand-purple hover:border-brand-purple/50 transition-all duration-300 cursor-pointer relative z-20"
+                title="Share Website"
+              >
+                <Share2 size={18} />
+              </button>
+
+              {/* Discord (Placeholder) */}
+              <a 
+                href="https://discord.com" 
+                target="_blank"
+                rel="noreferrer"
+                className="w-10 h-10 flex items-center justify-center rounded-full bg-white/5 border border-white/10 text-white/70 hover:bg-brand-purple/20 hover:text-brand-purple hover:border-brand-purple/50 transition-all duration-300 cursor-pointer relative z-20"
+                title="Join Community"
+              >
+                <Discord size={18} />
+              </a>
             </div>
           </div>
 
@@ -68,13 +106,13 @@ const Footer = () => {
                     Chennai, India
                   </span>
                 </li>
-                <li className="flex items-center gap-3 group">
+                <li className="flex items-center gap-3 group relative z-20">
                   <Mail size={20} className="text-brand-purple shrink-0 group-hover:text-brand-green transition-colors duration-300" />
-                  <span className="text-gray-400 text-sm italic">Coming Soon</span>
+                  <a href="mailto:athera@citchennai.net" target="_blank" rel="noreferrer" className="text-gray-400 text-sm hover:text-brand-purple transition-colors duration-300">athera@citchennai.net</a>
                 </li>
-                <li className="flex items-center gap-3 group">
+                <li className="flex items-center gap-3 group relative z-20">
                   <Phone size={20} className="text-brand-purple shrink-0 group-hover:text-brand-green transition-colors duration-300" />
-                  <span className="text-gray-400 text-sm italic">Coming Soon</span>
+                  <a href="tel:+919876543210" className="text-gray-400 text-sm hover:text-brand-purple transition-colors duration-300">+91 98765 43210</a>
                 </li>
               </ul>
             </div>

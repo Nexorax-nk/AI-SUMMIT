@@ -82,7 +82,7 @@ const FAQ = () => {
           </div>
           
           <h2 className="text-4xl sm:text-5xl font-heading mb-6 leading-tight text-white">
-            Frequently Asked <span className="text-gradient">Questions.</span>
+            FREQUENTLY ASKED <span className="text-gradient">QUESTIONS.</span>
           </h2>
         </motion.div>
 
