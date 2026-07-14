@@ -27,7 +27,7 @@ export default function Hero() {
       </div>
 
       {/* Hero Content */}
-      <div className="relative z-20 w-full max-w-7xl mx-auto px-4 sm:px-6 py-24 sm:py-32 flex flex-col items-center text-center mt-12 md:mt-0">
+      <div className="relative z-20 w-full max-w-7xl mx-auto px-4 sm:px-6 pt-24 sm:pt-32 pb-16 sm:pb-32 flex flex-col items-center text-center">
         
         {/* Small Heading */}
         <motion.div 

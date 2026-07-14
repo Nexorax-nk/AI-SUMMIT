@@ -106,7 +106,7 @@ const About = () => {
           </div>
 
           {/* RIGHT COLUMN: AI Illustration (The Masterpiece) */}
-          <div className="lg:col-span-7 relative flex justify-center items-center order-1 lg:order-2 w-full min-h-[350px] sm:min-h-[450px]">
+          <div className="lg:col-span-7 relative hidden lg:flex justify-center items-center order-1 lg:order-2 w-full min-h-[350px] sm:min-h-[450px]">
              {/* Deep Ambient Glow */}
              <div className="absolute inset-0 bg-gradient-to-tr from-brand-purple/20 via-transparent to-brand-green/20 rounded-full blur-[80px] -z-10" />
 
@@ -218,7 +218,7 @@ const About = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.6, delay: idx * 0.1 }}
-              className="glass relative p-8 flex flex-col items-start rounded-2xl overflow-hidden group border border-white/5 bg-black/40 backdrop-blur-md cursor-pointer"
+              className="glass relative p-5 sm:p-8 flex flex-col items-start rounded-2xl overflow-hidden group border border-white/5 bg-black/40 backdrop-blur-md cursor-pointer"
               whileHover={{ y: -8 }}
             >
               {/* Hover Gradient Background */}
@@ -228,7 +228,7 @@ const About = () => {
               <div className="absolute inset-0 border-2 border-transparent group-hover:border-brand-purple/30 rounded-2xl transition-colors duration-500" />
               <div className="absolute inset-0 opacity-0 group-hover:opacity-100 shadow-[inset_0_0_30px_rgba(138,43,226,0.15)] rounded-2xl transition-opacity duration-500" />
 
-              <div className="relative z-10 mb-6 p-4 rounded-xl bg-white/5 border border-white/10 group-hover:scale-110 group-hover:bg-gradient-to-br group-hover:from-brand-purple group-hover:to-brand-green group-hover:border-transparent transition-all duration-500 shadow-lg">
+              <div className="relative z-10 mb-4 sm:mb-6 p-3 sm:p-4 rounded-xl bg-white/5 border border-white/10 group-hover:scale-110 group-hover:bg-gradient-to-br group-hover:from-brand-purple group-hover:to-brand-green group-hover:border-transparent transition-all duration-500 shadow-lg">
                 {card.icon}
               </div>
               <h4 className="relative z-10 mb-3 text-xl font-heading text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-gray-400 transition-colors duration-300">
