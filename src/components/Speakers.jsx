@@ -1,28 +1,34 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { User, Sparkles, Calendar, Clock, Lock } from 'lucide-react';
+import leonardImg from '../assets/speakers/leonard.jpg';
+import arunImg from '../assets/speakers/arun.jpg';
+import rameshImg from '../assets/speakers/ramesh.jpg';
 
 const SPEAKERS = [
   {
     id: 1,
-    name: 'Coming Soon',
-    role: 'Industry Pioneer',
+    name: 'Leonard Selvaraja Fernando',
+    role: 'CEO & Director of Eng, icrewsystems',
     category: 'Keynote Speaker',
     timeSlot: 'Day 1 • Morning',
+    image: leonardImg
   },
   {
     id: 2,
-    name: 'Coming Soon',
-    role: 'AI Researcher',
+    name: 'Arun Nair',
+    role: 'CEO, Startup Singam',
     category: 'Tech Deep Dive',
     timeSlot: 'Day 1 • Afternoon',
+    image: arunImg
   },
   {
     id: 3,
-    name: 'Coming Soon',
-    role: 'Founder & CEO',
+    name: 'Ramesh Babu',
+    role: 'Manager Consulting Expert @ CGI',
     category: 'Fireside Chat',
     timeSlot: 'Day 2 • Morning',
+    image: rameshImg
   }
 ];
 
@@ -53,7 +59,7 @@ const Speakers = () => {
           </h2>
           
           <p className="max-w-2xl mx-auto text-lg text-text-muted leading-relaxed">
-            From founders redefining industries to researchers pushing the frontier — our speaker lineup is carefully curated to inspire. Full roster dropping soon.
+            From founders redefining industries to researchers pushing the frontier — our speaker lineup is carefully curated to inspire. Meet the experts shaping tomorrow.
           </p>
         </motion.div>
 
@@ -73,14 +79,14 @@ const Speakers = () => {
                 {/* Animated Background Gradients */}
                 <div className="absolute inset-0 bg-gradient-to-br from-brand-purple/5 to-brand-green/5 opacity-50 group-hover:opacity-100 transition-opacity duration-700" />
                 
-                {/* Glowing Silhouette / Lock Icon */}
-                <div className="relative z-10 flex flex-col items-center gap-3 opacity-50 group-hover:opacity-100 transition-all duration-500 group-hover:scale-110">
-                  <div className="w-16 h-16 rounded-full border border-white/10 bg-white/5 flex items-center justify-center backdrop-blur-md shadow-[0_0_30px_rgba(255,255,255,0.03)] group-hover:shadow-[0_0_30px_rgba(138,43,226,0.2)] group-hover:border-brand-purple/50 transition-all duration-500">
-                    <User size={28} className="text-white/50 group-hover:text-brand-purple transition-colors duration-500" />
-                  </div>
-                  <div className="flex items-center gap-1.5 bg-black/80 px-3 py-1 rounded-full border border-white/10 shadow-[0_5px_15px_rgba(0,0,0,0.5)]">
-                    <Lock size={10} className="text-brand-green" />
-                    <span className="text-[9px] uppercase tracking-widest text-brand-green font-semibold">Locked</span>
+                {/* Glowing Silhouette / Profile Image */}
+                <div className="relative z-10 flex flex-col items-center gap-3 opacity-90 group-hover:opacity-100 transition-all duration-500 group-hover:scale-110">
+                  <div className="w-36 h-36 sm:w-40 sm:h-40 rounded-full border-2 border-brand-purple/20 bg-[#050505] flex items-center justify-center shadow-[0_0_30px_rgba(255,255,255,0.03)] group-hover:shadow-[0_0_30px_rgba(138,43,226,0.4)] group-hover:border-brand-purple/50 transition-all duration-500 overflow-hidden">
+                    {speaker.image ? (
+                      <img src={speaker.image} alt={speaker.name} className="w-full h-full object-cover" />
+                    ) : (
+                      <User size={32} className="text-white/80 group-hover:text-brand-purple transition-colors duration-500" />
+                    )}
                   </div>
                 </div>
                 

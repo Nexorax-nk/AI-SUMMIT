@@ -1,5 +1,5 @@
 import React from 'react';
-import { Mail, Phone, MapPin, Globe, MessageCircle, Share2, Disc as Discord } from 'lucide-react';
+import { Mail, Phone, MapPin, Globe, MessageCircle, Share2 } from 'lucide-react';
 
 const Footer = () => {
   return (
@@ -61,16 +61,7 @@ const Footer = () => {
                 <Share2 size={18} />
               </button>
 
-              {/* Discord (Placeholder) */}
-              <a 
-                href="https://discord.com" 
-                target="_blank"
-                rel="noreferrer"
-                className="w-10 h-10 flex items-center justify-center rounded-full bg-white/5 border border-white/10 text-white/70 hover:bg-brand-purple/20 hover:text-brand-purple hover:border-brand-purple/50 transition-all duration-300 cursor-pointer relative z-20"
-                title="Join Community"
-              >
-                <Discord size={18} />
-              </a>
+
             </div>
           </div>
 
