@@ -100,10 +100,7 @@ const Speakers = () => {
                   <span className="text-[9px] font-space tracking-widest uppercase text-brand-purple bg-brand-purple/10 px-2.5 py-0.5 rounded-md border border-brand-purple/20">
                     {speaker.category}
                   </span>
-                  <span className="flex items-center gap-1 text-[9px] text-gray-400 font-space uppercase tracking-wider">
-                    <Clock size={10} className="text-brand-green" />
-                    {speaker.timeSlot}
-                  </span>
+
                 </div>
                 
                 <h3 className="text-xl font-heading text-white mb-1 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-gray-400 transition-all duration-300">
