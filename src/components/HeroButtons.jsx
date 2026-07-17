@@ -9,7 +9,7 @@ export default function HeroButtons() {
       transition={{ duration: 0.8, delay: 0.6 }}
       className="flex flex-col sm:flex-row items-center gap-6 mt-10 justify-center w-full max-w-2xl mx-auto"
     >
-      <a href="https://unstop.com/o/EoMwOZi?utm_medium=Share&utm_source=athercit72249&utm_campaign=Conferences" target="_blank" rel="noreferrer" className="group relative w-full sm:w-auto overflow-hidden rounded-full p-[1px] block">
+      <a href="https://unstop.com/conferences/astrax26-ai-innovation-summit-chennai-institute-of-technology-1719170" target="_blank" rel="noreferrer" className="group relative w-full sm:w-auto overflow-hidden rounded-full p-[1px] block">
         <span className="absolute inset-0 bg-gradient-to-r from-brand-purple to-brand-green rounded-full blur-[2px] opacity-70 group-hover:opacity-100 transition-opacity duration-300"></span>
         <div className="relative bg-black rounded-full px-8 py-3.5 flex items-center justify-center gap-3 w-full h-full transition-all duration-300 group-hover:bg-black/80">
           <span className="text-sm font-semibold tracking-wider text-white">REGISTER NOW</span>
