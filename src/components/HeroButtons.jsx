@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { ArrowRight, Download } from 'lucide-react';
+import agendaPdf from '../assets/Athera_AI_Summit_Chief_Guest_Agenda.pdf';
 
 export default function HeroButtons() {
   return (
@@ -17,7 +18,7 @@ export default function HeroButtons() {
         </div>
       </a>
 
-      <a href="/event.pdf" download="ASTRAX26_Event.pdf" className="group flex items-center justify-center gap-3 px-8 py-3.5 rounded-full border border-white/20 hover:border-white/40 hover:bg-white/5 transition-all duration-300 w-full sm:w-auto">
+      <a href={agendaPdf} download="Athera_AI_Summit_Chief_Guest_Agenda.pdf" className="group flex items-center justify-center gap-3 px-8 py-3.5 rounded-full border border-white/20 hover:border-white/40 hover:bg-white/5 transition-all duration-300 w-full sm:w-auto">
         <span className="text-sm font-medium tracking-wider text-gray-300 group-hover:text-white transition-colors">EVENT AGENDA</span>
         <Download size={16} className="text-gray-400 group-hover:text-white group-hover:-translate-y-0.5 transition-all duration-300" />
       </a>
