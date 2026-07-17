@@ -24,8 +24,8 @@ const SPEAKERS = [
   },
   {
     id: 3,
-    name: 'Ramesh Babu',
-    role: 'Manager Consulting Expert @ CGI',
+    name: 'Ramesh Kumar Thangamuthu',
+    role: 'Vice President Consulting Delivery @ CGI',
     category: 'Fireside Chat',
     timeSlot: 'Day 2 • Morning',
     image: rameshImg
